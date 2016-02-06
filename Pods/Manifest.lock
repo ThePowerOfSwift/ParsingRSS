@@ -1,0 +1,21 @@
+PODS:
+  - Kanna (1.0.4)
+  - MWFeedParser (1.0.1):
+    - MWFeedParser/FeedParser (= 1.0.1)
+    - MWFeedParser/NSDate+InternetDateTime (= 1.0.1)
+    - MWFeedParser/NSString+HTML (= 1.0.1)
+  - MWFeedParser/FeedParser (1.0.1):
+    - MWFeedParser/NSDate+InternetDateTime
+    - MWFeedParser/NSString+HTML
+  - MWFeedParser/NSDate+InternetDateTime (1.0.1)
+  - MWFeedParser/NSString+HTML (1.0.1)
+
+DEPENDENCIES:
+  - Kanna
+  - MWFeedParser
+
+SPEC CHECKSUMS:
+  Kanna: 537762df5e2203714769f8351340b3c724adb2bd
+  MWFeedParser: 2cf646014c1baf6ad1b08c480b40a08180079247
+
+COCOAPODS: 0.39.0
