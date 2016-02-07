@@ -12,6 +12,7 @@
 		F6129F231C66749E009BD2FC /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6129F221C66749E009BD2FC /* ViewController.swift */; };
 		F6129F281C66749E009BD2FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6129F271C66749E009BD2FC /* Assets.xcassets */; };
 		F6129F2B1C66749E009BD2FC /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6129F291C66749E009BD2FC /* LaunchScreen.storyboard */; };
+		F6168A551C67B84E00DB61D4 /* compacthodinkeersstest.html in Resources */ = {isa = PBXBuildFile; fileRef = F6168A541C67B84E00DB61D4 /* compacthodinkeersstest.html */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -23,6 +24,7 @@
 		F6129F271C66749E009BD2FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F6129F2A1C66749E009BD2FC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F6129F2C1C66749E009BD2FC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F6168A541C67B84E00DB61D4 /* compacthodinkeersstest.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = compacthodinkeersstest.html; sourceTree = "<group>"; };
 		F9D389074AD23D0AA91F2137 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,6 +81,7 @@
 				F6129F201C66749E009BD2FC /* AppDelegate.swift */,
 				F6129F221C66749E009BD2FC /* ViewController.swift */,
 				F6129F271C66749E009BD2FC /* Assets.xcassets */,
+				F6168A541C67B84E00DB61D4 /* compacthodinkeersstest.html */,
 				F6129F291C66749E009BD2FC /* LaunchScreen.storyboard */,
 				F6129F2C1C66749E009BD2FC /* Info.plist */,
 			);
@@ -147,6 +150,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F6129F2B1C66749E009BD2FC /* LaunchScreen.storyboard in Resources */,
+				F6168A551C67B84E00DB61D4 /* compacthodinkeersstest.html in Resources */,
 				F6129F281C66749E009BD2FC /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

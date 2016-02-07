@@ -9,12 +9,44 @@
 import UIKit
 import Kanna
 import MWFeedParser
+import Cartography
 
 class ViewController: UIViewController, MWFeedParserDelegate, UITextViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.view.backgroundColor = UIColor.whiteColor()
-        request()
+        
+        let htmlFile = NSBundle.mainBundle().pathForResource("compacthodinkeersstest", ofType: "html")
+        let htmlString = try? String(contentsOfFile: htmlFile!, encoding: NSUTF8StringEncoding)
+        
+        var scrollView = UIScrollView()
+        scrollView = UIScrollView(frame: self.view.frame)
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        self.view.addSubview(scrollView)
+        
+        let stackView = UIStackView(arrangedSubviews: restructureText(htmlString!) as! [UIView])
+//        stackView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height * 6)
+        
+        stackView.axis = UILayoutConstraintAxis.Vertical
+        stackView.distribution = UIStackViewDistribution.Fill
+        scrollView.addSubview(stackView)
+        
+        for view in stackView.arrangedSubviews {
+            constrain(view) { view in
+                view.leading == view.superview!.leading
+                view.trailing == view.superview!.trailing
+            }
+        }
+        
+        self.view.setNeedsDisplay()
+        self.view.setNeedsLayout()
+        
+        scrollView.contentSize = stackView.frame.size
+        
+        constrain(stackView) { stack in
+            stack.edges == stack.superview!.edges
+        }
+//        request()
     }
     
     func addHyperLink(html:String, noTags:String) -> NSMutableAttributedString {
@@ -113,13 +145,11 @@ class ViewController: UIViewController, MWFeedParserDelegate, UITextViewDelegate
                     length = startOfImageLoc - prevLocation
                     
                     if startOfImageLoc != 0{
-                        let textView:UITextView = UITextView()
-                        textView.selectable = true
-                        textView.editable = false
-                        textView.scrollEnabled = false
+                        let label:UILabel = UILabel()
                         let substring = didEmbedHyperlinks.attributedSubstringFromRange(NSMakeRange(prevLocation, length))
-                        textView.attributedText = substring
-                        stack.append(textView)
+                        label.numberOfLines = 0
+                        label.attributedText = substring
+                        stack.append(label)
                         prevLocation = endOfImageLoc
                     }
                     
@@ -154,35 +184,6 @@ class ViewController: UIViewController, MWFeedParserDelegate, UITextViewDelegate
     }
     
     func feedParser(parser: MWFeedParser, didParseFeedItem item: MWFeedItem) {
-        var scrollView = UIScrollView()
-        scrollView = UIScrollView(frame: self.view.frame)
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        self.view.addSubview(scrollView)
-        
-        let stackView = UIStackView(arrangedSubviews: restructureText(item.summary) as! [UIView])
-        stackView.frame = CGRectMake(0, 0, self.view.frame.width, self.view.frame.height * 6)
-        stackView.axis = UILayoutConstraintAxis.Vertical
-        stackView.distribution = UIStackViewDistribution.FillEqually
-        scrollView.addSubview(stackView)
-        
-        self.view.setNeedsDisplay()
-        self.view.setNeedsLayout()
-        
-        //        var fullHeight:CGFloat = 0.0
-        //        for view in stackView.arrangedSubviews {
-        //            if view.isKindOfClass(UITextView) {
-        //                let tv:UITextView = view as! UITextView
-        //                print("textview: \(tv)")
-        //            }
-        //            if view.isKindOfClass(UIImageView) {
-        //                let tv:UIImageView = view as! UIImageView
-        //                print("imageview: \(tv.bounds.height)")
-        //            }
-        //            fullHeight += view.intrinsicContentSize().height
-        //        }
-        //        print("new:\(fullHeight) vs old:\(stackView.frame.height)")
-        scrollView.contentSize = stackView.frame.size
-        
         parser.stopParsing()
     }
 }
